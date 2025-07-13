@@ -22,8 +22,8 @@
       <intervalMinutes>60</intervalMinutes>
       <intervalSeconds>0</intervalSeconds>
       <minutes>0</minutes>
-      <repeat>Y</repeat>
-      <schedulerType>1</schedulerType>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
       <weekDay>1</weekDay>
       <parallel>N</parallel>
       <xloc>50</xloc>
@@ -41,9 +41,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\Cargos.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\STG\Cargos.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -69,9 +67,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\Divisoes.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\STG\Divisoes.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -97,9 +93,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\Folha_de_pagamento.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\STG\Folha_de_pagamento.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -125,9 +119,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\Funcionarios.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\STG\Funcionarios.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -153,19 +145,6 @@
       <attributes_hac/>
     </action>
     <action>
-      <name>Write to log</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <attributes/>
-      <loglevel>Basic</loglevel>
-      <logmessage/>
-      <logsubject/>
-      <parallel>N</parallel>
-      <xloc>176</xloc>
-      <yloc>192</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
       <name>Departamentos.hpl</name>
       <description/>
       <type>PIPELINE</type>
@@ -176,9 +155,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\Departamentos.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>C:\Users\Eduar\Desktop\pratica nova\DW-HOP\ETL\STG\Departamentos.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -193,36 +170,18 @@
       <yloc>224</yloc>
       <attributes_hac/>
     </action>
+    <action>
+      <name>Dummy</name>
+      <description/>
+      <type>DUMMY</type>
+      <attributes/>
+      <parallel>N</parallel>
+      <xloc>192</xloc>
+      <yloc>192</yloc>
+      <attributes_hac/>
+    </action>
   </actions>
   <hops>
-    <hop>
-      <from>Cargos.hpl</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Divisoes.hpl</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Folha_de_pagamento.hpl</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Funcionarios.hpl</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>Start</from>
       <to>Cargos.hpl</to>
@@ -241,15 +200,8 @@
       <from>Folha_de_pagamento.hpl</from>
       <to>Funcionarios.hpl</to>
       <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Success</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>Cargos.hpl</from>
@@ -262,7 +214,7 @@
       <from>Funcionarios.hpl</from>
       <to>Departamentos.hpl</to>
       <enabled>Y</enabled>
-      <evaluation>N</evaluation>
+      <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
@@ -271,6 +223,41 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Cargos.hpl</from>
+      <to>Dummy</to>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Divisoes.hpl</from>
+      <to>Dummy</to>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Folha_de_pagamento.hpl</from>
+      <to>Dummy</to>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Funcionarios.hpl</from>
+      <to>Dummy</to>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Departamentos.hpl</from>
+      <to>Dummy</to>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

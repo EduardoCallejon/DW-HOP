@@ -21,8 +21,8 @@
   </notepads>
   <order>
     <hop>
-      <from>Get system info</from>
-      <to>Table output</to>
+      <from>Add sequence</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -30,7 +30,46 @@
       <to>Get system info</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Get system info</from>
+      <to>Add sequence</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <transform>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <seqname>SEQ_</seqname>
+    <start_at>1</start_at>
+    <use_counter>Y</use_counter>
+    <use_database>N</use_database>
+    <valuename>id_folha_pagamento</valuename>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
   <transform>
     <name>Get system info</name>
     <type>SystemInfo</type>
@@ -50,7 +89,158 @@
     </fields>
     <attributes/>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>256</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>id_folha_pagamento</name>
+      </field>
+      <field>
+        <name>Funcionario</name>
+      </field>
+      <field>
+        <name>Cargo</name>
+      </field>
+      <field>
+        <name>Departamento</name>
+      </field>
+      <field>
+        <name>Divisao</name>
+      </field>
+      <field>
+        <name>Data</name>
+      </field>
+      <field>
+        <name>Salario</name>
+      </field>
+      <field>
+        <name>data_inser</name>
+      </field>
+      <select_unspecified>Y</select_unspecified>
+      <meta>
+        <name>Data</name>
+        <rename>Data</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>dd/MM/yy</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale>br</date_format_locale>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compress>N</compress>
+    <compress_variables/>
+    <directory>${java.io.tmpdir}</directory>
+    <fields>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>id_folha_pagamento</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Funcionario</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Cargo</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Departamento</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Divisao</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Data</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>Salario</name>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <name>data_inser</name>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <free_memory/>
+    <sort_prefix>out</sort_prefix>
+    <sort_size>1000000</sort_size>
+    <unique_rows>N</unique_rows>
+    <attributes/>
+    <GUI>
+      <xloc>608</xloc>
       <yloc>368</yloc>
     </GUI>
   </transform>
@@ -136,7 +326,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Sal·rio</name>
+        <name>Salario</name>
         <type>Number</type>
         <format>#.#</format>
         <currency>$</currency>
@@ -149,7 +339,7 @@
     </fields>
     <attributes/>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>128</xloc>
       <yloc>368</yloc>
     </GUI>
   </transform>
@@ -172,25 +362,34 @@
     <only_when_have_rows>N</only_when_have_rows>
     <partitioning_daily>N</partitioning_daily>
     <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
     <partitioning_monthly>Y</partitioning_monthly>
-    <return_field/>
     <return_keys>N</return_keys>
     <schema>public</schema>
     <specify_fields>N</specify_fields>
     <table>stg_folha</table>
-    <tablename_field/>
     <tablename_in_field>N</tablename_in_field>
     <tablename_in_table>Y</tablename_in_table>
     <truncate>Y</truncate>
     <use_batch>Y</use_batch>
     <attributes/>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>704</xloc>
       <yloc>368</yloc>
     </GUI>
   </transform>
   <transform_error_handling>
+    <error>
+      <source_transform>Select values</source_transform>
+      <target_transform/>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename/>
+      <descriptions_valuename/>
+      <fields_valuename/>
+      <codes_valuename/>
+      <max_errors/>
+      <max_pct_errors/>
+      <min_pct_rows/>
+    </error>
   </transform_error_handling>
   <attributes/>
 </pipeline>

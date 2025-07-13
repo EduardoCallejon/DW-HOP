@@ -21,11 +21,6 @@
   </notepads>
   <order>
     <hop>
-      <from>Get system info</from>
-      <to>Table output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Replace in string</from>
       <to>Get system info</to>
       <enabled>Y</enabled>
@@ -33,6 +28,16 @@
     <hop>
       <from>Stg_departamentos</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get system info</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -75,9 +80,7 @@
         <case_sensitive>N</case_sensitive>
         <in_stream_name>Departamento</in_stream_name>
         <is_unicode>N</is_unicode>
-        <out_stream_name/>
-        <replace_by_string>pesquisa e desenvolvimento</replace_by_string>
-        <replace_field_by_string/>
+        <replace_by_string>Pesquisa e desenvolvimento</replace_by_string>
         <replace_string>Pesq. &amp; Desenv.</replace_string>
         <set_empty_string>N</set_empty_string>
         <use_regex>N</use_regex>
@@ -87,9 +90,7 @@
         <case_sensitive>N</case_sensitive>
         <in_stream_name>Departamento</in_stream_name>
         <is_unicode>N</is_unicode>
-        <out_stream_name/>
         <replace_by_string>Administracao</replace_by_string>
-        <replace_field_by_string/>
         <replace_string>AdministraÁ„o</replace_string>
         <set_empty_string>N</set_empty_string>
         <use_regex>N</use_regex>
@@ -99,6 +100,35 @@
     <attributes/>
     <GUI>
       <xloc>240</xloc>
+      <yloc>176</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>Codigo</name>
+      </field>
+      <field>
+        <name>Departamento</name>
+      </field>
+      <field>
+        <name>data_inser</name>
+      </field>
+      <select_unspecified>Y</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>432</xloc>
       <yloc>176</yloc>
     </GUI>
   </transform>
@@ -171,7 +201,19 @@
     <commit>1000</commit>
     <connection>Base Local</connection>
     <fields>
-</fields>
+      <field>
+        <column_name>Codigo</column_name>
+        <stream_name>Codigo</stream_name>
+      </field>
+      <field>
+        <column_name>Departamento</column_name>
+        <stream_name>Departamento</stream_name>
+      </field>
+      <field>
+        <column_name>data_inser</column_name>
+        <stream_name>data_inser</stream_name>
+      </field>
+    </fields>
     <ignore_errors>N</ignore_errors>
     <only_when_have_rows>N</only_when_have_rows>
     <partitioning_daily>N</partitioning_daily>
@@ -187,17 +229,17 @@
     <tablename_in_field>N</tablename_in_field>
     <tablename_in_table>Y</tablename_in_table>
     <truncate>Y</truncate>
-    <use_batch>Y</use_batch>
+    <use_batch>N</use_batch>
     <attributes/>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>528</xloc>
       <yloc>176</yloc>
     </GUI>
   </transform>
   <transform_error_handling>
     <error>
       <source_transform>Replace in string</source_transform>
-      <target_transform>Write to log</target_transform>
+      <target_transform/>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>
@@ -209,7 +251,7 @@
     </error>
     <error>
       <source_transform>Table output</source_transform>
-      <target_transform>Write to log</target_transform>
+      <target_transform>Select values</target_transform>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>
